@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Pajaro : MonoBehaviour
 {
+    private Controles inputActions;
     private Rigidbody2D rb;
     private Vector2 posicionInicial;
     public TextMeshProUGUI textoUI;
@@ -89,6 +90,11 @@ public class Pajaro : MonoBehaviour
         {
             textoTiros.text = "Tiros: " + tiros;
         }
+    }
+
+    private void Awake()
+    {
+        inputActions = new Controles();
     }
 
     void ContarNuevoGolpe()
