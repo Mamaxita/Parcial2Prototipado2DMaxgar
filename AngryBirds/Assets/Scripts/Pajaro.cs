@@ -1,5 +1,7 @@
+using System.Reflection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Pajaro : MonoBehaviour
 {
@@ -92,10 +94,37 @@ public class Pajaro : MonoBehaviour
         }
     }
 
+    
     private void Awake()
     {
         inputActions = new Controles();
     }
+
+    private void OnEnable()
+
+    {
+        inputActions.PajarosVSaliens.Enable();
+        inputActions.PajarosVSaliens.Presionado.started += LePico;
+    }
+
+    void LePico(InputAction.CallbackContext handler)
+    {
+        print("Le pico al click izquierdo");
+    }
+    private void OnDisable()
+    {
+        inputActions.PajarosVSaliens.Disable();
+       
+        
+    }
+
+    
+
+    void ImprimirSuma(int numeroUno, int numeroDos)
+    {
+
+    }
+
 
     void ContarNuevoGolpe()
     {
